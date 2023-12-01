@@ -1,0 +1,10 @@
+{
+	"modelName": "3",
+	"modelYear": 1995,
+	"description": "first",
+	"vin": "last",
+	"mileage": 10000,
+	"manufacturer": "test",
+	"chasisType": "test",
+	"fuelType": "test"
+}
