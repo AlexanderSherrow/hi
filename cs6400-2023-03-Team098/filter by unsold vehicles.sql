@@ -1,1 +1,0 @@
-select * from vehicle where vehicle.vin not in (select vin from bought)

@@ -1,1 +1,0 @@
-select part_number, description, vendor_name, purchase_order_number, cost_per_part * part_quantity as cost, current_status from partsOrder natural join part where vin = 'VIN_INPUT'

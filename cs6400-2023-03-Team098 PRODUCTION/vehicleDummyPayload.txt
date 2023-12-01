@@ -5,6 +5,6 @@
 	"vin": "last",
 	"mileage": 10000,
 	"manufacturer": "test",
-	"chasisType": "test",
+	"chassisType": "test",
 	"fuelType": "test"
 }
