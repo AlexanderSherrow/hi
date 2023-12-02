@@ -1,0 +1,49 @@
+.list-container {
+  width: 100%;
+}
+
+.horizontal-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.horizontal-list-red {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.horizontal-list li {
+  display: inline;
+  width: 12.5%;
+  border:1px solid #000;
+}
+
+.horizontal-list-red li {
+  display: inline;
+  width: 12.5%;
+  border:1px solid #000;
+  background-color: #e90202;
+}
+
+.horizontal-list button {
+  display: inline;
+  width: 12.5%;
+}
+
+.horizontal-list select {
+  border:1px solid #000;
+  display: inline;
+  width: 12.5%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

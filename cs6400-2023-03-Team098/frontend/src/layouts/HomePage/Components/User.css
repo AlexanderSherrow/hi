@@ -1,0 +1,15 @@
+.list-container-user {
+  width: 100%;
+}
+
+.horizontal-list-user {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  
+}
+
+.horizontal-list-user li {
+  width: 25%;
+  border:1px solid #000;
+}

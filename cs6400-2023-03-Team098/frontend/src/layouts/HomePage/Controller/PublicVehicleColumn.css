@@ -1,0 +1,14 @@
+.list-container {
+    width: 100%;
+  }
+  
+  .horizontal-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .horizontal-list li {
+    width: 12.5%;
+    border:1px solid #000;
+  }
