@@ -29,6 +29,7 @@ export function InventoryClerkVehicleControlPanel() {
       <InventoryClerkVehicleNotForSaleCount/>
       <AddNewCarButton/>
       <InventoryClerkVehicleSearch path method1Data={{setRefresh, setPayload}}/>
+      Click on a row to go to the details page!
       <VehicleColumnBar/>
       <InventoryClerkVehicleList path ={location} payload={payload} setRefresh = {setRefresh} refresh={refresh}/>
       </>

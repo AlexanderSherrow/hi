@@ -10,14 +10,14 @@ import { useNavigate } from 'react-router-dom';
       color: textColor
     });
 
-    if(props.costOfParts >= 500)
+    if(props.costOfParts >= 500 || props.partsOrdered >= 5)
     return (      
         <ol class="horizontal-list-red">
               <li>{props.name}</li>
               <li>{props.totalSold}</li>
-              <li>{props.purchasePrice}</li>
+              <li>${props.purchasePrice}</li>
               <li>{props.partsOrdered}</li>
-              <li>{props.costOfParts}</li>
+              <li>${(Math.round(props.costOfParts * 100) / 100).toFixed(2)}</li>
         </ol>
           );
 
@@ -26,9 +26,9 @@ import { useNavigate } from 'react-router-dom';
   <ol class="horizontal-list">
         <li>{props.name}</li>
         <li>{props.totalSold}</li>
-        <li>{props.purchasePrice}</li>
+        <li>${props.purchasePrice}</li>
         <li>{props.partsOrdered}</li>
-        <li>{props.costOfParts}</li>
+        <li>${(Math.round(props.costOfParts * 100) / 100).toFixed(2)}</li>
   </ol>
     );
     

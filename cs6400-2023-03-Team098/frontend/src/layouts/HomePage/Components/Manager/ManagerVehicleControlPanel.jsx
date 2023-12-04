@@ -39,6 +39,7 @@ export function ManagerVehicleControlPanel() {
         <a href={constants.hostURL + "/MonthlySales"}>Monthly Sales</a>
 
         <ManagerVehicleSearch path method1Data={{ setRefresh, setPayload }} />
+        Click on a row to go to the details page!
         <VehicleColumnBar />
         <ManagerVehicleList
           path={location}

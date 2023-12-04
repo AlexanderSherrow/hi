@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
     function navigateToDetailsPage(){
       const queryParameters = new URLSearchParams(window.location.search);
       let user = queryParameters.get("user");
-      navigate('/DetailsPageOwner?vin=' + props.vin + "&soldStatus="+props.soldStatus + "&user=" + user);
+      navigate('/DetailsPageOwner?vin=' + props.vin + "&user=" + user);
     };
 
 
@@ -21,7 +21,8 @@ import { useNavigate } from 'react-router-dom';
     <li>{props.fuelType}</li>
     <li>{props.color}</li>
     <li>{props.mileage}</li>
-    <li>{props.salesPrice}</li>
+    <li>{(Math.round(props.salesPrice * 100) / 100).toFixed(2)}</li>
+
   </ol>
     );
     

@@ -190,6 +190,8 @@ public class dataLoader {
 				String modelName = item[1];
 				int year = Integer.parseInt(item[2]);
 				String desc = item[3];
+				if (desc.equals(""))
+					desc = "N/A";
 				String manufacturer = item[4];
 				String condition = item[5];
 				String vehicleType = item[6];
@@ -239,8 +241,23 @@ public class dataLoader {
 					saleDate = item[14];
 					soldToCustomerId = item[15];
 					salesperson = item[16];
+
+					String driversLicenseQueryBought = "Select count(*) from Customer c where c.drivers_license_number = '"
+							+ soldToCustomerId + "';";
+					statement = con.createStatement();
+					rs = statement.executeQuery(driversLicenseQueryBought);
+					String driversLicenseBought = "N/A";
+					String businessTaxIdBought = "N/A";
+
+					rs.next();
+					if (rs.getString(1).equals("1"))
+						driversLicenseBought = soldToCustomerId;
+					else
+						businessTaxIdBought = soldToCustomerId;
+
 					String boughtByCustomerQuery = "Insert into Bought values " + "( '" + vin + "', '" + saleDate
-							+ "', '" + businessTaxId + "', '" + driversLicense + "', '" + salesperson + "' );";
+							+ "', '" + businessTaxIdBought + "', '" + driversLicenseBought + "', '" + salesperson
+							+ "' );";
 					statement = con.createStatement();
 					System.out.println(boughtByCustomerQuery);
 					statement.executeUpdate(boughtByCustomerQuery);

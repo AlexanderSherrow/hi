@@ -52,7 +52,7 @@ function InventoryClerkVehicleSearch(props) {
         let select = document.getElementById("manufacturer");
         var opt = document.createElement("option");
         opt.value = "";
-        opt.innerHTML = "";
+        opt.innerHTML = "Manufacturer";
         select.appendChild(opt);
         for (var i = 0; i < result.length; i++) {
           let name = result[i];
@@ -73,7 +73,7 @@ function InventoryClerkVehicleSearch(props) {
         let select = document.getElementById("color");
         var opt = document.createElement("option");
         opt.value = "";
-        opt.innerHTML = "";
+        opt.innerHTML = "Color";
         select.appendChild(opt);
         for (var i = 0; i < result.length; i++) {
           let name = result[i];
@@ -94,7 +94,7 @@ function InventoryClerkVehicleSearch(props) {
         let select = document.getElementById("fuelType");
         var opt = document.createElement("option");
         opt.value = "";
-        opt.innerHTML = "";
+        opt.innerHTML = "Fuel Type";
         select.appendChild(opt);
         for (var i = 0; i < result.length; i++) {
           let name = result[i];
@@ -115,7 +115,7 @@ function InventoryClerkVehicleSearch(props) {
         let select = document.getElementById("chassisType");
         var opt = document.createElement("option");
         opt.value = "";
-        opt.innerHTML = "";
+        opt.innerHTML = "Vehicle Type";
         select.appendChild(opt);
         for (var i = 0; i < result.length; i++) {
           let name = result[i];
@@ -145,6 +145,7 @@ function InventoryClerkVehicleSearch(props) {
           name="modelYear"
           min="1000"
           max={new Date().getFullYear() + 1}
+          placeholder="Year"
         />
         <select name="fuelType" id="fuelType" />
         <input type="text" name="keyword" placeholder="keyword" />

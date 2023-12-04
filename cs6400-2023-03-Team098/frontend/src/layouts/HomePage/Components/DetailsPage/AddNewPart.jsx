@@ -112,6 +112,10 @@ export function AddNewPart() {
     <div>
       Part Order Number: {partOrderNumber}
       <br></br>
+      <br></br>
+      VENDOR | QUANTITY | PART NUMBER | COST | DESCRIPTION
+      <br></br>
+
       <select
         value={vendor}
         onChange={handleVendorChange}

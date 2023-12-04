@@ -42,6 +42,7 @@ export function OwnerVehicleControlPanel() {
 
         <OwnerVehicleSearch path method1Data={{ setRefresh, setPayload }} />
         <AddNewCarButton/>
+        Click on a row to go to the details page!
         <VehicleColumnBar />
         <OwnerVehicleList
           path={location}

@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
   <ol class="horizontal-list">
     <li>{props.vendorName}</li>
     <li>{props.quantity}</li>
-    <li>{props.cost}</li>
-  </ol>
+    <li>${(Math.round(props.cost * 100) / 100).toFixed(2)}</li>
+    </ol>
     );
     
   }

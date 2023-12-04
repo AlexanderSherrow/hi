@@ -25,7 +25,7 @@ export function DetailsPageOwner()
 
 
     useEffect(() => {
-      let mainPath = "/vehicle/getDetailsInventoryClerk";
+      let mainPath = "/vehicle/getDetailsManager";
       setIsLoading(true);
       fetch(constants.postURL + mainPath,
       {
@@ -39,23 +39,51 @@ export function DetailsPageOwner()
     descriptionList = [];
       result = JSON.stringify(result);
       result = JSON.parse(result);
-      for(const key in result)
-      {
+      console.log(result);
         descriptionList.push(
-        <DetailsOwner key = {result[key].vin}
-        vin = {result[key].vin}
-        modelName = {result[key].modelName}
-        modelYear = {result[key].modelYear}
-        mileage = {result[key].mileage}
-        manufacturer = {result[key].manufacturer}
-        chassisType = {result[key].chassisType}
-        fuelType = {result[key].fuelType}
-        color = {result[key].color}
-        salesPrice = {result[key].salesPrice}
-        costOfParts = {result[key].costOfParts}
-        description = {result[key].description}
+        <DetailsOwner key = {result.vin}
+        boughtBusinessLastName = {result.boughtBusinessLastName}
+        salespeopleLastName = {result.salespeopleLastName}
+        chassis_type = {result.chassis_type}
+        color = {result.color}
+        costOfParts = {result.costOfParts}
+        soldPhone = {result.soldPhone}
+        boughtStreet = {result.boughtStreet}
+        soldBusinessName = {result.soldBusinessName}
+        description = {result.description}
+        boughtEmail = {result.boughtEmail}
+        soldContactTitle = {result.soldContactTitle}
+        soldEmail = {result.soldEmail}
+        manufacturer = {result.manufacturer}
+        soldPostal = {result.soldPostal}
+        model_name = {result.model_name}
+        soldIndividualLastName = {result.soldIndividualLastName}
+        boughtPhone = {result.boughtPhone}
+        boughtBusinessFirstName = {result.boughtBusinessFirstName}
+        inventoryClerkFirstName = {result.inventoryClerkFirstName}
+        vin = {result.vin}
+        fuel_type = {result.fuel_type}
+        boughtIndividualFirstName = {result.boughtIndividualFirstName}
+        mileage = {result.mileage}
+        originalPurchasePrice = {result.originalPurchasePrice}
+        boughtState = {result.boughtState}
+        boughtContactTitle = {result.boughtContactTitle}
+        soldStreet = {result.soldStreet}
+        model_year = {result.model_year}
+        inventoryClerkUserLastName = {result.inventoryClerkUserLastName}
+        boughtBusinessName = {result.boughtBusinessName}
+        soldState = {result.soldState}
+        boughtPostal = {result.boughtPostal}
+        salespeopleFirstName = {result.salespeopleFirstName}
+        boughtIndividualLastName = {result.boughtIndividualLastName}
+        soldBusinessLastName = {result.soldBusinessLastName}
+        CustomerPurchaseDate = {result.CustomerPurchaseDate}
+        soldCity = {result.soldCity}
+        boughtCity = {result.boughtCity}
+        originalPurchaseDate = {result.originalPurchaseDate}
+        soldBusinessFirstName = {result.soldBusinessFirstName}
+        soldIndividualFirstName = {result.soldIndividualFirstName}
         />);
-      }
       setDescriptionList(descriptionList);
     }
     );
@@ -151,6 +179,7 @@ export function DetailsPageOwner()
     return (
     <>
     <div class="list-container">
+    Vehicle Details:
     <DetailsPageInventoryClerkColumnBar/>
     {descriptionList}
   </div>

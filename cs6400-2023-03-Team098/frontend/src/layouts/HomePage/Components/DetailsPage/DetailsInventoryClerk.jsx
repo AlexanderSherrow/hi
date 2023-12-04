@@ -15,8 +15,8 @@ import '../Vehicle.css';
     <li>{props.fuelType}</li>
     <li>{props.color}</li>
     <li>{props.mileage}</li>
-    <li>{props.salesPrice}</li>
-    <li>{props.costOfParts}</li>
+    <li>${(Math.round(props.salesPrice * 100) / 100).toFixed(2)}</li>
+    <li>${(Math.round(props.costOfParts * 100) / 100).toFixed(2)}</li>
     <li>{props.description}</li>
   </ol>
     );

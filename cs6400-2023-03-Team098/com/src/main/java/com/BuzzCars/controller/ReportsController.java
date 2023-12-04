@@ -34,7 +34,7 @@ public class ReportsController {
 		String username = "root";
 		String password = "password";
 		String url = "jdbc:mysql://localhost:3306/cs6400?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-		String query = "select distinct chassis_type from vehicle;";
+		String query = "select distinct name from ChassisType;";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,7 +48,7 @@ public class ReportsController {
 			ResultSet rs = statement.executeQuery(query);
 			List<String> chassisTypes = new ArrayList();
 			while (rs.next())
-				chassisTypes.add(rs.getString("chassis_type"));
+				chassisTypes.add(rs.getString("name"));
 
 			query = "select distinct vehicle_condition from sold;";
 			statement = con.createStatement();
@@ -222,10 +222,10 @@ public class ReportsController {
 		String username = "root";
 		String password = "password";
 		String url = "jdbc:mysql://localhost:3306/cs6400?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-		String query = "SELECT Vehicle.chassis_Type, IFNULL(TRUNCATE(AVG(DATEDIFF(Bought.sell_date, Sold.purchase_date) + 1), 0), 'N/A') "
-				+ "FROM Vehicle " + "LEFT JOIN Sold ON Vehicle.vin = Sold.vin "
-				+ "LEFT JOIN Bought ON Sold.vin = Bought.vin " + "GROUP BY Vehicle.chassis_type "
-				+ "ORDER BY Vehicle.chassis_type;";
+		String query = "SELECT name, IFNULL(TRUNCATE(AVG(DATEDIFF(Bought.sell_date, Sold.purchase_date) + 1), 0), 'N/A') "
+				+ "FROM ChassisType LEFT JOIN Vehicle ON Vehicle.chassis_type = ChassisType.name LEFT JOIN Sold ON Vehicle.vin = Sold.vin "
+				+ "LEFT JOIN Bought ON Sold.vin = Bought.vin " + "GROUP BY ChassisType.name "
+				+ "ORDER BY ChassisType.name;";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {

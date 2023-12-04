@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +44,7 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) " + "where v.vin not in (select vin from bought) and "
 				+ "((v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') or "
-				+ "(v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) "
+				+ "(v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) "
 				+ "and v.vin not in (select vin from PartsOrder natural join (select * from part where part.current_status = 'received' or part.current_status = 'ordered') as unistalled) "
 				+ "GROUP BY vin " + "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
 
@@ -138,7 +139,7 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) " + "where v.vin not in (select vin from bought) and "
 				+ "((v.vin like 'VIN_INPUT' and v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') or "
-				+ "(v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) "
+				+ "(v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) "
 				+ "and v.vin not in (select vin from PartsOrder natural join (select * from part where part.current_status = 'received' or part.current_status = 'ordered') as unistalled) "
 				+ "GROUP BY vin " + "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
 
@@ -239,7 +240,7 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) " + "where v.vin in (select vin from bought) and "
 				+ "((v.vin like 'VIN_INPUT' and v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') or "
-				+ "(v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) "
+				+ "(v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) "
 				+ "and v.vin not in (select vin from PartsOrder natural join (select * from part where part.current_status = 'received' or part.current_status = 'ordered') as unistalled) "
 				+ "GROUP BY vin " + "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
 
@@ -340,9 +341,9 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) " + "where v.vin not in (select vin from bought) and "
 				+ "((v.vin like 'VIN_INPUT' and v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') or "
-				+ "(v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) "
+				+ "(v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) "
 				+ "GROUP BY vin " + "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
-
+		System.out.println("hi");
 		String vinInput = map.get("vin");
 		String manufacturerInput = map.get("manufacturer");
 		String fuelInput = map.get("fuelType");
@@ -442,7 +443,7 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) "
 				+ "where v.vin not in (select vin from bought) and ((v.vin like 'VIN_INPUT' and v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') "
-				+ "or (v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) GROUP BY vin "
+				+ "or (v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) GROUP BY vin "
 				+ "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
 		String vinInput = map.get("vin");
 		System.out.println(vinInput);
@@ -548,7 +549,7 @@ public class VehicleController {
 				+ "GROUP BY PartsOrder.purchase_order_number, PartsOrder.vin) AS costs_per_order "
 				+ "GROUP BY vin) as parts on v.vin = parts.vin) "
 				+ "where ((v.vin like 'VIN_INPUT' and v.chassis_type like 'CHASSIS_INPUT' and v.manufacturer like 'MANUFACTURER_INPUT' and v.model_year like 'YEAR_INPUT' and v.fuel_type like 'GAS_INPUT') "
-				+ "or (v.description like 'KEYWORD' or v.model_year like 'KEYWORD' or v.model_name like 'KEYWORD' or v.manufacturer like 'KEYWORD')) GROUP BY vin "
+				+ "or (v.description like '%KEYWORD%' or v.model_year like '%KEYWORD%' or v.model_name like '%KEYWORD%' or v.manufacturer like '%KEYWORD%')) GROUP BY vin "
 				+ "ORDER BY vin asc) as results where results.car_color like '%COLOR_INPUT%';";
 		String vinInput = map.get("vin");
 		System.out.println(vinInput);
@@ -739,16 +740,15 @@ public class VehicleController {
 		String username = "root";
 		String password = "password";
 		String url = "jdbc:mysql://localhost:3306/cs6400?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+		String descriptionInput = input.get("description");
+		if (descriptionInput.equals(""))
+			descriptionInput = "N/A";
+
 		String query = "insert into Vehicle values ('" + input.get("modelName") + "', '" + input.get("modelYear")
-				+ "', '" + input.get("description") + "', '" + input.get("vin") + "', '" + input.get("mileage") + "', '"
+				+ "', '" + descriptionInput + "', '" + input.get("vin") + "', '" + input.get("mileage") + "', '"
 				+ input.get("manufacturer") + "', '" + input.get("fuelType") + "', '" + input.get("chassisType")
 				+ "');";
-
-		if (input.get("description").equals(""))
-			query = "Insert into Vehicle (model_name, model_year, vin, mileage, manufacturer, fuel_type, chassis_type) "
-					+ "VALUES " + "( '" + input.get("modelName") + "', '" + input.get("modelYear") + "', '"
-					+ input.get("vin") + "', '" + input.get("mileage") + "', '" + input.get("manufacturer") + "', '"
-					+ input.get("fuelType") + "', '" + input.get("chassisType") + "' );";
 
 		String colors = input.get("color");
 		String[] colorsArr = colors.split(",");
@@ -795,12 +795,17 @@ public class VehicleController {
 			if (input.containsKey("newCustomer")) {
 				String newCustomerQuery = "insert into Customer values ('STATE_INPUT', 'CITY_INPUT', 'STREET_INPUT', 'POSTAL_INPUT',"
 						+ " 'PHONE_INPUT', 'EMAIL_INPUT', 'BUSINESS_TAX_ID_INPUT', 'DRIVER_LICENSE_INPUT');";
+				if (input.get("email").length() == 0)
+					newCustomerQuery = "insert into Customer (state, city, street, postal_code, phone_number, business_tax_id, drivers_license_number) values ('STATE_INPUT', 'CITY_INPUT', 'STREET_INPUT', 'POSTAL_INPUT',"
+							+ " 'PHONE_INPUT', 'BUSINESS_TAX_ID_INPUT', 'DRIVER_LICENSE_INPUT');";
+				else
+					newCustomerQuery = newCustomerQuery.replace("EMAIL_INPUT", input.get("email"));
+
 				newCustomerQuery = newCustomerQuery.replace("STATE_INPUT", input.get("state"));
 				newCustomerQuery = newCustomerQuery.replace("CITY_INPUT", input.get("city"));
 				newCustomerQuery = newCustomerQuery.replace("STREET_INPUT", input.get("street"));
 				newCustomerQuery = newCustomerQuery.replace("POSTAL_INPUT", input.get("postal"));
 				newCustomerQuery = newCustomerQuery.replace("PHONE_INPUT", input.get("phone"));
-				newCustomerQuery = newCustomerQuery.replace("EMAIL_INPUT", input.get("email"));
 				newCustomerQuery = newCustomerQuery.replace("BUSINESS_TAX_ID_INPUT", businessTaxId);
 				newCustomerQuery = newCustomerQuery.replace("DRIVER_LICENSE_INPUT", driversLicense);
 
@@ -911,6 +916,144 @@ public class VehicleController {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("getDetailsManager")
+	@Consumes("application/json")
+	public Response getDetailsManager(Map<String, String> input) {
+		System.out.println(input);
+		String username = "root";
+		String password = "password";
+		String url = "jdbc:mysql://localhost:3306/cs6400?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+		String query = "SELECT " + "vehicle.vin, " + "vehicle.model_name, "
+				+ "vehicle.model_year, group_concat(color.color) as color, "
+				+ "IFNULL(vehicle.description, 'N/A') AS description, " + "vehicle.mileage, " + "vehicle.manufacturer, "
+				+ "vehicle.fuel_type, " + "vehicle.chassis_type, " + "boughtFromCustomer.street AS boughtStreet, "
+				+ "boughtFromCustomer.city AS boughtCity, " + "boughtFromCustomer.state AS boughtState, "
+				+ "boughtFromCustomer.postal_code AS boughtPostal, "
+				+ "boughtFromCustomer.phone_number AS boughtPhone, "
+				+ "IFNULL(boughtFromCustomer.email, 'N/A') AS boughtEmail, "
+				+ "IFNULL(boughtFromBusiness.business_Name, 'N/A') AS boughtBusinessName, "
+				+ "IFNULL(boughtFromBusiness.contact_Title, 'N/A') AS boughtContactTitle, "
+				+ "IFNULL(boughtFromBusiness.first_name, 'N/A') AS boughtBusinessFirstName, "
+				+ "IFNULL(boughtFromBusiness.last_name, 'N/A') AS boughtBusinessLastName, "
+				+ "IFNULL(boughtFromIndividual.first_name, 'N/A') AS boughtIndividualFirstName, "
+				+ "IFNULL(boughtFromIndividual.last_name, 'N/A') AS boughtIndividualLastName, "
+				+ "inventoryClerkUser.first_name AS inventoryClerkFirstName, "
+				+ "inventoryClerkUser.last_name AS inventoryClerkUserLastName, "
+				+ "sold.purchase_price AS originalPurchasePrice, " + "sold.purchase_date AS originalPurchaseDate, "
+				+ "TRUNCATE(IFNULL(costOfParts, 0), 2) as costOfParts, "
+				+ "IFNULL(soldToCustomer.street, 'N/A') AS soldStreet, "
+				+ "IFNULL(soldToCustomer.city, 'N/A') AS soldCity, "
+				+ "IFNULL(soldToCustomer.state, 'N/A') AS soldState, "
+				+ "IFNULL(soldToCustomer.postal_code, 'N/A') AS soldPostal, "
+				+ "IFNULL(soldToCustomer.phone_number, 'N/A') AS soldPhone, "
+				+ "IFNULL(soldToCustomer.email, 'N/A') AS soldEmail, "
+				+ "IFNULL(soldToBusiness.business_Name, 'N/A') AS soldBusinessName, "
+				+ "IFNULL(soldToBusiness.contact_Title, 'N/A') AS soldContactTitle, "
+				+ "IFNULL(soldToBusiness.first_name, 'N/A') AS soldBusinessFirstName, "
+				+ "IFNULL(soldToBusiness.last_name, 'N/A') AS soldBusinessLastName, "
+				+ "IFNULL(soldToIndividual.first_name, 'N/A') AS soldIndividualFirstName, "
+				+ "IFNULL(soldToIndividual.last_name, 'N/A') AS soldIndividualLastName, "
+				+ "IFNULL(salespeopleUser.first_name, 'N/A') AS salespeopleFirstName, "
+				+ "IFNULL(salespeopleUser.last_name, 'N/A') AS salespeopleLastName, "
+				+ "IFNULL(bought.sell_date, 'N/A') AS CustomerPurchaseDate " + "FROM " + "vehicle " + "NATURAL JOIN "
+				+ "sold " + "LEFT JOIN "
+				+ "individual AS boughtFromIndividual ON sold.drivers_license_number = boughtFromIndividual.drivers_license_number "
+				+ "AND sold.business_tax_id = boughtFromIndividual.business_tax_id " + "LEFT JOIN "
+				+ "business AS boughtFromBusiness ON sold.drivers_license_number = boughtFromBusiness.drivers_license_number "
+				+ "AND sold.business_tax_id = boughtFromBusiness.business_tax_id " + "LEFT JOIN "
+				+ "customer AS boughtFromCustomer ON sold.drivers_license_number = boughtFromCustomer.drivers_license_number "
+				+ "AND sold.business_tax_id = boughtFromCustomer.business_tax_id " + "LEFT JOIN "
+				+ "inventoryClerk ON sold.inventoryClerk = inventoryClerk.username " + "LEFT JOIN "
+				+ "user AS inventoryClerkUser ON inventoryClerk = inventoryClerkUser.username " + "LEFT JOIN "
+				+ "bought ON vehicle.vin = bought.vin " + "LEFT JOIN "
+				+ "business AS soldToBusiness ON bought.drivers_license_number = soldToBusiness.drivers_license_number "
+				+ "AND bought.business_tax_id = soldToBusiness.business_tax_id " + "LEFT JOIN "
+				+ "individual AS soldToIndividual ON bought.drivers_license_number = soldToIndividual.drivers_license_number "
+				+ "AND bought.business_tax_id = soldToIndividual.business_tax_id " + "LEFT JOIN "
+				+ "customer AS soldToCustomer ON bought.drivers_license_number = soldToCustomer.drivers_license_number "
+				+ "AND bought.business_tax_id = soldToCustomer.business_tax_id " + "LEFT JOIN "
+				+ "salespeople ON bought.salespeople = inventoryClerk.username " + "LEFT JOIN "
+				+ "user AS salespeopleUser ON salespeople = salespeopleUser.username " + "LEFT JOIN " + "(SELECT "
+				+ "vin, SUM(part_quantity * cost_per_part) AS costOfParts " + "FROM " + "part "
+				+ "NATURAL JOIN partsOrder " + "GROUP BY vin) AS parts ON parts.vin = vehicle.vin "
+				+ " left join color on color.vin = vehicle.vin " + " where vehicle.vin = 'VIN_INPUT'"
+				+ " group by vin;";
+
+		query = query.replace("VIN_INPUT", input.get("vin"));
+		System.out.println(query);
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			Connection con = DriverManager.getConnection(url, username, password);
+			Statement statement = con.createStatement();
+			System.out.println(query);
+			ResultSet rs = statement.executeQuery(query);
+			rs.next();
+			Map<String, String> map = new HashMap();
+			map.put("vin", rs.getString("vin"));
+			map.put("model_name", rs.getString("model_name"));
+			map.put("color", rs.getString("color"));
+			map.put("model_year", rs.getString("model_year"));
+			map.put("description", rs.getString("description"));
+			map.put("mileage", rs.getString("mileage"));
+			map.put("manufacturer", rs.getString("manufacturer"));
+			map.put("fuel_type", rs.getString("fuel_type"));
+			map.put("chassis_type", rs.getString("chassis_type"));
+			map.put("boughtStreet", rs.getString("boughtStreet"));
+			map.put("boughtCity", rs.getString("boughtCity"));
+			map.put("boughtState", rs.getString("boughtState"));
+			map.put("boughtPostal", rs.getString("boughtPostal"));
+			map.put("boughtPhone", rs.getString("boughtPhone"));
+			map.put("boughtEmail", rs.getString("boughtEmail"));
+			map.put("boughtBusinessName", rs.getString("boughtBusinessName"));
+			map.put("boughtContactTitle", rs.getString("boughtContactTitle"));
+			map.put("boughtBusinessFirstName", rs.getString("boughtBusinessFirstName"));
+			map.put("boughtBusinessLastName", rs.getString("boughtBusinessLastName"));
+			map.put("boughtIndividualFirstName", rs.getString("boughtIndividualFirstName"));
+			map.put("boughtIndividualLastName", rs.getString("boughtIndividualLastName"));
+			map.put("inventoryClerkFirstName", rs.getString("inventoryClerkFirstName"));
+			map.put("inventoryClerkUserLastName", rs.getString("inventoryClerkUserLastName"));
+			map.put("originalPurchasePrice", rs.getString("originalPurchasePrice"));
+			map.put("originalPurchaseDate", rs.getString("originalPurchaseDate"));
+			map.put("costOfParts", rs.getString("costOfParts"));
+			map.put("soldStreet", rs.getString("soldStreet"));
+			map.put("soldCity", rs.getString("soldCity"));
+			map.put("soldState", rs.getString("soldState"));
+			map.put("soldPostal", rs.getString("soldPostal"));
+			map.put("soldPhone", rs.getString("soldPhone"));
+			map.put("soldEmail", rs.getString("soldEmail"));
+			map.put("soldBusinessName", rs.getString("soldBusinessName"));
+			map.put("soldContactTitle", rs.getString("soldContactTitle"));
+			map.put("soldBusinessFirstName", rs.getString("soldBusinessFirstName"));
+			map.put("soldBusinessLastName", rs.getString("soldBusinessLastName"));
+			map.put("soldIndividualFirstName", rs.getString("soldIndividualFirstName"));
+			map.put("soldIndividualLastName", rs.getString("soldIndividualLastName"));
+			map.put("salespeopleFirstName", rs.getString("salespeopleFirstName"));
+			map.put("salespeopleLastName", rs.getString("salespeopleLastName"));
+			map.put("CustomerPurchaseDate", rs.getString("CustomerPurchaseDate"));
+
+			con.close();
+			return Response.status(200).header("Access-Control-Allow-Origin", "*")
+					.header("Access-Control-Allow-Credentials", "true")
+					.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+					.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity(map)
+					.build();
+		} catch (
+
+		SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("getDetailsInventoryClerk")
 	@Consumes("application/json")
 	public Response getDetailsInventoryClerk(Map<String, String> input) {
@@ -922,7 +1065,7 @@ public class VehicleController {
 				+ "v.fuel_type, v.mileage, TRUNCATE(IFNULL(cost_of_parts, 0), 2) as cost_of_parts, TRUNCATE(s.purchase_price, 2) as purchase_price, "
 				+ "group_concat(c.color) as car_color " + "FROM "
 				+ "((vehicle v NATURAL JOIN color c NATURAL JOIN sold s NATURAL JOIN customer cu) LEFT JOIN "
-				+ "(SELECT " + "vin, SUM(total_cost_per_order) * 1.10 AS cost_of_parts " + "FROM ( " + "SELECT "
+				+ "(SELECT " + "vin, SUM(total_cost_per_order) AS cost_of_parts " + "FROM ( " + "SELECT "
 				+ "PartsOrder.vin, " + "SUM(part.cost_per_part * part.part_quantity) AS total_cost_per_order " + "FROM "
 				+ "PartsOrder " + "JOIN " + "part ON PartsOrder.purchase_order_number = part.purchase_order_number "
 				+ "GROUP BY " + "PartsOrder.purchase_order_number, PartsOrder.vin " + ") AS costs_per_order "
@@ -1086,12 +1229,17 @@ public class VehicleController {
 			if (input.containsKey("newCustomer")) {
 				String newCustomerQuery = "insert into Customer values ('STATE_INPUT', 'CITY_INPUT', 'STREET_INPUT', 'POSTAL_INPUT',"
 						+ " 'PHONE_INPUT', 'EMAIL_INPUT', 'BUSINESS_TAX_ID_INPUT', 'DRIVER_LICENSE_INPUT');";
+				if (input.get("email").length() == 0)
+					newCustomerQuery = "insert into Customer (state, city, street, postal_code, phone_number, email, business_tax_id, drivers_license_number) values ('STATE_INPUT', 'CITY_INPUT', 'STREET_INPUT', 'POSTAL_INPUT',"
+							+ " 'PHONE_INPUT', 'Not Provided', 'BUSINESS_TAX_ID_INPUT', 'DRIVER_LICENSE_INPUT');";
+				else
+					newCustomerQuery = newCustomerQuery.replace("EMAIL_INPUT", input.get("email"));
+
 				newCustomerQuery = newCustomerQuery.replace("STATE_INPUT", input.get("state"));
 				newCustomerQuery = newCustomerQuery.replace("CITY_INPUT", input.get("city"));
 				newCustomerQuery = newCustomerQuery.replace("STREET_INPUT", input.get("street"));
 				newCustomerQuery = newCustomerQuery.replace("POSTAL_INPUT", input.get("postal"));
 				newCustomerQuery = newCustomerQuery.replace("PHONE_INPUT", input.get("phone"));
-				newCustomerQuery = newCustomerQuery.replace("EMAIL_INPUT", input.get("email"));
 				newCustomerQuery = newCustomerQuery.replace("BUSINESS_TAX_ID_INPUT", businessTaxId);
 				newCustomerQuery = newCustomerQuery.replace("DRIVER_LICENSE_INPUT", driversLicense);
 

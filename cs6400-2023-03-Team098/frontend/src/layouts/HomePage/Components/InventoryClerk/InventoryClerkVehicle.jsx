@@ -26,7 +26,7 @@ import { useNavigate } from 'react-router-dom';
     <li>{props.fuelType}</li>
     <li>{props.color}</li>
     <li>{props.mileage}</li>
-    <li>{props.salesPrice}</li>
+    <li>${(Math.round(props.salesPrice * 100) / 100).toFixed(2)}</li>
   </ol>
     );
     

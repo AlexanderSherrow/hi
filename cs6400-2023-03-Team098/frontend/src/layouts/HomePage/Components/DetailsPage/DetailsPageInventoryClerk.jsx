@@ -108,7 +108,8 @@ export function DetailsPageInventoryClerk()
       Parts ordered for this car:
       <PartOrderColumnBar/>
     {partList}
-    <button onClick={navigateToAddPartForm}> Click me to make a new part order!</button>
+    <button onClick={navigateToAddPartForm}> Add part
+order</button>
     </div>
     </>
     );

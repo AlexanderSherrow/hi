@@ -1,7 +1,0 @@
-{
-	"userName": "3",
-	"password": "pass",
-	"firstName": "first",
-	"lastName": "last",
-	"type": "Owner"
-}

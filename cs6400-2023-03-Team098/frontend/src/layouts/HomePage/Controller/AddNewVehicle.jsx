@@ -172,7 +172,7 @@ function AddNewVehicle(props) {
           />
           <input type="text" name="description" placeholder="Description" />
           <input type="text" name="vin" placeholder="VIN" />
-          <input type="text" name="mileage" placeholder="Mileage" />
+          <input type="number" name="mileage" placeholder="Mileage" />
           <select
             name="manufacturer"
             id="manufacturer"
@@ -182,8 +182,8 @@ function AddNewVehicle(props) {
           <select name="chassisType" id="chassisType" />
           <select name="color" id="color" />
           <select name="condition" id="condition" />
-          <input type="text" name="purchasePrice" placeholder="purchasePrice" />
-          <input type="text" name="purchaseDate" placeholder="purchaseDate" />
+          <input type="number" name="purchasePrice" placeholder="Purchase Price" />
+          <input type="text" name="purchaseDate" placeholder="Date (YYYY-MM-DD)" />
           <button type="submit">Add new Vehicle</button>
         </form>
         <hr />

@@ -14,11 +14,10 @@ import { useNavigate } from 'react-router-dom';
     return (      
   <ol class="horizontal-list">
     <li>{props.chassisType}</li>
-    <li>{props.excellent}</li>
-    <li>{props.fair}</li>
-    <li>{props.good}</li>
-    <li>{props.veryGood}</li>
-
+    <li>${(Math.round(props.excellent * 100) / 100).toFixed(2)}</li>
+    <li>${(Math.round(props.fair * 100) / 100).toFixed(2)}</li>
+    <li>${(Math.round(props.good * 100) / 100).toFixed(2)}</li>
+    <li>${(Math.round(props.veryGood * 100) / 100).toFixed(2)}</li>
   </ol>
     );
     

@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
     <li>{props.firstName}</li>
     <li>{props.lastName}</li>
     <li>{props.vehiclesSold}</li>
-    <li>{props.totalSales}</li>
+    <li>${(Math.round(props.totalSales * 100) / 100).toFixed(2)}</li>
   </ol>
     );
     

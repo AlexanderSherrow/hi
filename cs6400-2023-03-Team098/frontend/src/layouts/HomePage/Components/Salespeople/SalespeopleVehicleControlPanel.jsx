@@ -22,6 +22,7 @@ export function SalespeopleVehicleControlPanel() {
       <>
       <button onClick={logout}>LOG OUT</button>
       <SalespoepleVehicleSearch path method1Data={{setRefresh, setPayload}}/>
+      Click on a row to go to the details page!
       <VehicleColumnBar/>
       <SalespeopleVehicleList path ={location} payload={payload} setRefresh = {setRefresh} refresh={refresh}/>
       </>

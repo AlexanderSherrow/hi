@@ -22,8 +22,8 @@ import { useNavigate } from 'react-router-dom';
     <li>{props.year}</li>
     <li>{props.month}</li>
     <li>{props.vehiclesSold}</li>
-    <li>{props.totalSaleIncome}</li>
-    <li>{props.totalNetIncome}</li>
+    <li>${(Math.round(props.totalSaleIncome * 100) / 100).toFixed(2)}</li>
+    <li>${(Math.round(props.totalNetIncome * 100) / 100).toFixed(2)}</li>
     <button onClick={navigateToDrillDown}>Click for drill down report</button>
   </ol>
     );

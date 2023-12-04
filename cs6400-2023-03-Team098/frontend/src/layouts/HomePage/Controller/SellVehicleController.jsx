@@ -28,7 +28,7 @@ export function SellVehicle(props) {
   return (
     <div className="App">
       <form onSubmit={formHandler}>
-        <input type="text" name="sellDate" placeholder="Sales Date" />
+        <input type="text" name="sellDate" placeholder="Sales Date (YYYY-MM-DD)" />
         <button type="submit">Finalize Sale</button>
       </form>
       <hr />

@@ -20,7 +20,7 @@ return (
     <li>{props.description}</li>
     <li>{props.vendorName}</li>
     <li>{props.purchaseOrderNumber}</li>
-    <li>{props.totalPartsCost}</li>
+    <li>${(Math.round(props.totalPartsCost * 100) / 100).toFixed(2)}</li>
     <li>{props.currentStatus}</li>
   </ol>
     );

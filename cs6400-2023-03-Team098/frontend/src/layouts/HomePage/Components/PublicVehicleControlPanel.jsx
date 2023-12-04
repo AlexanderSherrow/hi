@@ -51,8 +51,9 @@ console.log(user);
     return ( 
       <>
       LOGIN FAILED. TRY AGAIN.
-      <UserLogin setUser = {setUser} setRefresh = {setRefresh}/>
+      <UserLogin setUser = {setUser} setRefresh = {setRefresh} setUsername = {setUsername}/>
       <PublicVehicleSearch method1Data={{setRefresh, setPayload}}/>
+      Click on a row to go to the details page!
       <VehicleColumnBar/>
       <PublicVehicleList path ={location} payload={payload} setRefresh = {setRefresh} refresh={refresh}/>
       </>
@@ -64,6 +65,7 @@ console.log(user);
       <>
       <UserLogin setUser = {setUser} setRefresh = {setRefresh} setUsername = {setUsername}/>
       <PublicVehicleSearch method1Data={{setRefresh, setPayload}}/>
+      Click on a row to go to the details page!
       <VehicleColumnBar/>
       <PublicVehicleList path ={location} payload={payload} setRefresh = {setRefresh} refresh={refresh}/>
       </>
